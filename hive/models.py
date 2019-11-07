@@ -61,6 +61,7 @@ class studentApplying(models.Model):
     identity =  models.CharField(max_length =20 ,null=True)
     level = models.CharField(max_length =20 ,null=True)
     college = models.CharField(max_length =20 ,null=True)
+    cv = models.FileField(null=True, blank=True)
     language= models.CharField(max_length =20 ,null=True)
 
     def _def_(self):

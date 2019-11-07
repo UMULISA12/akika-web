@@ -217,10 +217,11 @@ def studentApply(request):
         identity_r = request.POST.get('identity')
         level_r = request.POST.get('level')
         college_r = request.POST.get('institution')
+        cv_r = request.POST.get('cv')
         language_r = request.POST.get('language')
         
 
-        c = studentApplying(first = first_r, last = last_r, phone = phone_r, email = email_r,identity = identity_r, level = level_r, college = college_r, language = language_r)
+        c = studentApplying(first = first_r, last = last_r, phone = phone_r, email = email_r,identity = identity_r, level = level_r, college = college_r, cv = cv_r, language = language_r)
         c.save()
         
 
