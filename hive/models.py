@@ -66,4 +66,18 @@ class studentApplying(models.Model):
     def _def_(self):
         return self.email
 
+
+class businessEntApplying(models.Model):
+    business_founder = models.CharField(max_length =20,null=True)
+    business_name =  models.CharField(max_length =20 ,null=True)
+    business_location = models.CharField(max_length =20, null=True)
+    business_email = models.EmailField(null=True)
+    contact_number =  models.IntegerField(null=True)
+    business_type = models.CharField(max_length =20 ,null=True)
+    message = models.TextField(max_length =20 ,null=True)
+    other = models.TextField(max_length =20 ,null=True)
+
+    def _def_(self):
+        return self.business_email
+
    

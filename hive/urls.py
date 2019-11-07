@@ -31,6 +31,7 @@ urlpatterns=[
     url('team/', views.team, name = 'team'),
     url('academics/', views.academics, name = 'academics'),
     url('studentApply/', views.studentApply, name = 'studentApply'),
+    url('businessEntApply/', views.businessEntApply, name = 'businessEntApply'),
     
 ]
 if settings.DEBUG:

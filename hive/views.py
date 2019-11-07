@@ -3,7 +3,7 @@ from .forms import StudentForm,FreelancerForm,EnterpriseForm,BusinessForm,Academ
 from django.contrib.auth.decorators import login_required
 
 from django.core.mail import send_mail
-from .models import Student,studentApplying
+from .models import Student,studentApplying, businessEntApplying
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 
 from django.core.mail import send_mail, BadHeaderError
@@ -233,4 +233,32 @@ def studentApply(request):
 
          return render(request, 'studentApply.html')
 
+
+
+
+
+def businessEntApply(request):
+    if request.method == 'POST':
+        business_founder_r = request.POST.get('business_founder')
+        business_name_r = request.POST.get('business_name')
+        business_location_r = request.POST.get('business_location')
+        business_email_r = request.POST.get('business_email')
+        contact_number_r = request.POST.get('contact_number')
+        business_type_r = request.POST.get('business_type')
+        message_r = request.POST.get('message')
+        other_r = request.POST.get('other')
+        
+
+        c = businessEntApplying(business_founder = business_founder_r, business_name =  business_name_r, business_location= business_location_r, business_email = business_email_r, contact_number = contact_number_r, business_type = business_type_r, message = message_r, other = other_r)
+        c.save()
+        
+
+        return render(request, 'successfull1.html')
+       
+
+        
+    #Do something
+    else:
+
+         return render(request, 'businessEntApply.html')
 

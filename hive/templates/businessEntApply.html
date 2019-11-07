@@ -8,8 +8,14 @@
     <style>
       html, body {
       min-height: 100%;
+    
       }
-      body, div, form, input, select, p { 
+
+      html{
+        background-image: url(https://images.pexels.com/photos/326240/pexels-photo-326240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+     
+      }
+      body, div, form, input, select, p,textarea { 
       padding: 0;
       margin: 0;
       outline: none;
@@ -64,7 +70,7 @@
       border: 1px solid #ccc;
       border-radius: 3px;
       }
-      input {
+      input,textarea {
       width: calc(100% - 10px);
       padding: 5px;
       }
@@ -264,77 +270,70 @@
      
     <div class="testbox">
 
-      <form method="POST" action="{% url 'studentApply' %}">
+      <form method="POST" action="{% url 'businessEntApply' %}">
         {% csrf_token %}
         <div class="banner">
-          <h1>AKIKA-BEE-HIVE Students/Freelancers Application Form</h1>
+          <h1>AKIKA-BEE-HIVE Business Ent Application Form</h1>
         </div>
         <h2>Applicant Details</h2>
         <div class="item">
-          <p>Name</p>
-          <div class="name-item">
-            <input type="text" name="first" placeholder="First"/>
-            <input type="text" name="last" placeholder="Last"/>
-          </div>
+          <p>Bussiness interprises</p>
+          
+            <input type="text" name="business_founder" placeholder="business founder"/>
+            <!-- <input type="text" name="last" placeholder="Last"/> -->
+          
         </div>
 
         <div class="item">
-          <p>Phone</p>
-          <input type="text" name="phone"/>
+          <p>Business name</p>
+          <input type="text" name="business_name"/>
         </div>
 
         <div class="item">
-            <p>Identity number</p>
-            <input type="text" name="identity"/>
+            <p>Business location</p>
+            <input type="text" name="business_location"/>
           </div>
 
        
         <div class="item">
-          <p>Email</p>
-          <input type="text" name="email"/>
+          <p>Business Email</p>
+          <input type="text" name="business_email"/>
         </div>
 
 
         <div class="item">
-            <p>Your university or college</p>
-            <input type="text" name="institution"/>
+            <p>Contact number</p>
+            <input type="text" name="contact_number"/>
           </div>
 
 
           <div class="item">
-              <p>level of education</p>
-              <select type="text" name="level">
-                  <option value="secondary">Secondary</option>
-                  <option value="advanceddip">Advanced diploma</option>
-                  <option value="bachelors">Bachelor</option>
-                  <option value="master">Masters</option>
+              <p>Business type</p>
+              <select type="text" name="business_type">
+                  <option value="">Select your business</option>
+                  <option value="services">Services</option>
+                  <option value="financial">Financial</option>
+                  <option value="security">Security</option>
+                  <option value="transportation">Transportation</option>
+                  <option value="Agriculture">Agriculture</option>
+                  <option value="education">Education</option>
 
                 </select>
             </div>
 
 
           <div class="item">
-                <p>Languages</p>
-                <label class="container">Python
-                    <input type="checkbox" name="language" value="python" checked>
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="container">JavaScript
-                    <input type="checkbox" name="language" value="js">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="container">Ruby
-                    <input type="checkbox" name="language" value="ruby">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="container">PHP
-                    <input type="checkbox" name="language" value="php">
-                    <span class="checkmark"></span>
-                  </label>
+                <p>Message</p>
+                <!-- <input type="text" name="message"/> -->
+                <textarea name="message" value="mess" placeholder="Enter your message here..."></textarea>
               </div>
+
+
+
+              <div class="item">
+                  <p>Other</p>
+                  <textarea name="other" value="oth" placeholder="Enter text here..."></textarea>
+                </div>
 
 
 
@@ -345,14 +344,7 @@
       </form>
     </div>
 
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-
+  
 
 
   </body>
