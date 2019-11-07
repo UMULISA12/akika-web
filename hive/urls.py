@@ -30,6 +30,7 @@ urlpatterns=[
     url('subscribe/', views.subscribe, name = 'subscribe'),
     url('team/', views.team, name = 'team'),
     url('academics/', views.academics, name = 'academics'),
+    url('studentApply/', views.studentApply, name = 'studentApply'),
     
 ]
 if settings.DEBUG:

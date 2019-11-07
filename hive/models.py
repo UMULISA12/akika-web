@@ -52,4 +52,18 @@ class Government(models.Model):
 class NewsLetterRecipients(models.Model):
     name = models.CharField(max_length = 30)
     email = models.EmailField()
+
+class studentApplying(models.Model):
+    first = models.CharField(max_length =20,null=True)
+    last =  models.CharField(max_length =20 ,null=True)
+    phone = models.IntegerField(null=True)
+    email = models.EmailField(null=True)
+    identity =  models.CharField(max_length =20 ,null=True)
+    level = models.CharField(max_length =20 ,null=True)
+    college = models.CharField(max_length =20 ,null=True)
+    language= models.CharField(max_length =20 ,null=True)
+
+    def _def_(self):
+        return self.email
+
    

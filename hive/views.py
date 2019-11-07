@@ -3,7 +3,7 @@ from .forms import StudentForm,FreelancerForm,EnterpriseForm,BusinessForm,Academ
 from django.contrib.auth.decorators import login_required
 
 from django.core.mail import send_mail
-from .models import Student
+from .models import Student,studentApplying
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 
 from django.core.mail import send_mail, BadHeaderError
@@ -11,6 +11,7 @@ from .email import send_welcome_email
 from django.conf import settings
 from . import forms
 from akika.settings import EMAIL_HOST_USER
+from django.contrib import messages
 
 
 
@@ -41,26 +42,6 @@ def search_results(request):
         return render(request, 'all-hive/search.html',{"message":message}) 
 
 
-@login_required(login_url='/accounts/login/')
-def student(request):
-    current_user = request.user
-    if request.method == 'POST':
-        form = StudentForm(request.POST, request.FILES)
-        if form.is_valid():
-           first_name = form.save(commit=False)
-           last_name = form.save(commit=False)
-           education_level = form.save(commit=False)
-           student_email= form.save(commit=False)
-            # article.editor = current_user
-           first_name .save()
-           last_name .save()
-           education_level .save()
-           student_email .save()
-        return redirect('welcome')
-
-    else:
-        form = StudentForm()
-    return render(request, 'student.html', {"form": form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -219,5 +200,37 @@ def team(request):
 
 def academics(request):
     return render(request, 'academic.html')
+
+
+@login_required(login_url='/accounts/login/')
+def student(request):
+    return render(request, 'studentApply.html')
+    
+
+
+def studentApply(request):
+    if request.method == 'POST':
+        first_r = request.POST.get('first')
+        last_r = request.POST.get('last')
+        phone_r = request.POST.get('phone')
+        email_r = request.POST.get('email')
+        identity_r = request.POST.get('identity')
+        level_r = request.POST.get('level')
+        college_r = request.POST.get('institution')
+        language_r = request.POST.get('language')
+        
+
+        c = studentApplying(first = first_r, last = last_r, phone = phone_r, email = email_r,identity = identity_r, level = level_r, college = college_r, language = language_r)
+        c.save()
+        
+
+        return render(request, 'successfull.html')
+       
+
+        
+    #Do something
+    else:
+
+         return render(request, 'studentApply.html')
 
 
